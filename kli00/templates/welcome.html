@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% block title %} <title>Personal Page</title> {% endblock %}
+</head>
+<body>
+  {% set msgs = get_flashed_messages() %}
+  {% for each in msgs %}
+    <h4> {{ each }} </h4>
+  {% endfor %}
+
+  <a href="../"><input type="button" value="View homepage"></a>
+  <a href=/static/help.html target="_blank"><input type="button" value="Help/FAQ"></a>
+  <a href="../create"><input type="button" value="Create a story"></a>
+  <a href="../stories"><input type="button" value="View other stories"></a>
+  <a href="../logout"><input type="button" value="Logout"></a>
+  <br>
+
+  {% block content %}
+    <p>Welcome!</p>
+    <table border="1">
+      <tr>
+        <th align="left">Title</th>
+        <th align="left">Content</th>
+      </tr>
+      {% for title, story in stories %}
+        <tr>
+          <td align="left"> <a href="../stories/{{ title }}"> {{ title }} </a> </td>
+          <td align="left">
+            {% for update in story %}
+              {{ update }}
+              <br><br>
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endblock %}
+</body>
+</html>

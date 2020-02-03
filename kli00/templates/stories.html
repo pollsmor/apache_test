@@ -1,0 +1,28 @@
+{% extends "welcome.html" %}
+
+{% block title %} <title>View stories</title> {% endblock %}
+
+{% block content %}
+<br><br>
+  <form action="/search" method="POST">
+    <input name="searchvalue" type="text" placeholder="Search stories.." required="required">
+    <input type="submit" value="Search">
+  </form>
+  <table border="1">
+    <tr>
+      <th align="left">Title</th>
+      <th align="left">Latest update</th>
+      <th align="left">Author</th>
+    </tr>
+    {% for story in stories %}
+      <tr>
+        <td align="left"> <a href="../stories/{{ story[0] }}"> {{ story[0] }} </a> </td>
+        <td align="left"> {{ story[1] }} </td>
+        <td align="left"> {{ story[2] }} </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
+
+</body>
+</html>

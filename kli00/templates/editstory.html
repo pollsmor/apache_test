@@ -1,0 +1,30 @@
+{% extends "welcome.html" %}
+
+{% block title %} <title> {{ title }} </title> {% endblock %}
+
+{% block content %}
+  <h3> {{ title }} </h3>
+  <h4> Latest update by {{ latestUpdate[2] }} </h4>
+  {{ latestUpdate[1] }}
+  <hr>
+  <form action="/addstoryupdate" method="post">
+      Story update (max 200 characters):
+      <br>
+
+      {% if canEdit %}
+        <textarea name="update" rows="3" cols="90%" maxlength="200" required="required"></textarea>
+        <input type="hidden" name="title" value="{{ title }}"/>
+        <br><br>
+        <input type="submit">
+      {% else %}
+        <textarea name="update" rows="3" cols="90%" maxlength="200" required="required" disabled> </textarea>
+        <br>
+        <p>You have already edited this story. Try another one.</p>
+        {% for update in story %}
+          {{ update }}
+          <br>
+          <br>
+        {% endfor %}
+      {% endif %}
+  </form>
+{% endblock %}

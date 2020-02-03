@@ -1,0 +1,21 @@
+{% extends "welcome.html" %}
+
+{% block title %} <title>Create a story</title> {% endblock %}
+
+{% block content %}
+  <form action="/addstory" method="post">
+      <br>
+      Story Title:
+      <br>
+      <input name="title" type="text" required="required">
+      <br><br>
+      Story content:
+      <br>
+      <textarea name="update" rows="10" cols="100%" required="required">{{ text }}</textarea>
+      <br><br>
+      <input type="submit">
+  </form>
+{% endblock %}
+
+</body>
+</html>
