@@ -1,7 +1,10 @@
 import sqlite3
 from datetime import datetime #for timestamp - that will be how story updates are sorted.
+import os #for path
 
-DB_FILE = "discobandit.db"
+DIR = os.path.dirname(__file__)
+DIR += '/../'
+DB_FILE = DIR + "discobandit.db"
 
 def accountExists(user):
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create

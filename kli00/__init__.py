@@ -7,15 +7,18 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import os #for generating a secret key
 from utl import db_ops
 
+DIR = os.path.dirname(__file__)
+DIR += '/'
+
 app = Flask(__name__)
 
 #Secret key handling
 secret_key_file = 'secret_key.txt'
-if (os.path.exists(secret_key_file)): #check if secret key file already exists
-    file = open(secret_key_file, 'r')
+if (os.path.exists(DIR + secret_key_file)): #check if secret key file already exists
+    file = open(DIR + secret_key_file, 'r')
     app.secret_key = file.read()
 else: #not adding the secret key file, so generate one on the spot for ppl without it
-    file = open(secret_key_file, 'w+') #w+ creates the file if it doesn't exist
+    file = open(DIR + secret_key_file, 'w+') #w+ creates the file if it doesn't exist
     file.write(str(os.urandom(32)))
     app.secret_key = file.read()
 
