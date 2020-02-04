@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime #for timestamp - that will be how story updates are sorted.
 import os #for path
 
-DIR = os.path.dirname(__file__)
+DIR = os.path.dirname(__file__) or '.'
 DIR += '/../'
 DB_FILE = DIR + "discobandit.db"
 

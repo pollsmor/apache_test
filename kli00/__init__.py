@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import os #for generating a secret key
 from utl import db_ops
 
-DIR = os.path.dirname(__file__)
+DIR = os.path.dirname(__file__) or '.'
 DIR += '/'
 
 app = Flask(__name__)
@@ -166,5 +166,5 @@ def search():
     return render_template("login.html")
 
 if __name__ == "__main__":
-    app.debug = True
+    app.debug = False
     app.run()
